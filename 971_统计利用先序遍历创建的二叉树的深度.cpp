@@ -40,7 +40,7 @@ class Binary_Tree{
     void clear(Node* a){
       if(a == nullptr) return;
       Node* templ = a->lchild;
-      Node* tempr = a->rchild;\
+      Node* tempr = a->rchild;
       delete a;
       clear(templ);
       clear(tempr);

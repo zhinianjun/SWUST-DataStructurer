@@ -29,7 +29,7 @@ class List{
         }
         void reverse(){
             Node* curr = head->next;
-            Node* pre = nullptr;
+            Node* pre = NULL;
             while (curr)
             {
                 Node* temp = curr->next;
