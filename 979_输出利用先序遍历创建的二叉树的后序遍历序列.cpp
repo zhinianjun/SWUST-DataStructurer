@@ -13,35 +13,38 @@ class Node{
 class Binaty_Tree{
     private:
         Node* root;
-        void create(Node*& root, string str, int& index){
-            if(str[index] == '#')
+
+        void create(Node*& a, string str, int& index){
+            if(str[index] == '#' || str[index] == '\0')
             {
                 index++;
                 return;
             }
-            root = new Node(str[index]);
-            create(root->lchild, str, index);
-            create(root->rchild, str, index);
+            a = new Node(str[index]);
+            index++;
+            create(a->lchild, str, index);
+            create(a->rchild, str, index);
         }
-        void destroy(Node*& root){
-            if(root) return;
+        void destroy(Node*& a){
+            if(a==NULL) return;
 
-            destroy(root->lchild);
-            destroy(root->rchild);
-            delete root;
+            destroy(a->lchild);
+            destroy(a->rchild);
+            delete a;
             
         }
-        void traverse(Node* root){
-            if(root) return;
-            traverse(root->lchild);
-             cout << root->data;
-            traverse(root->rchild);
+        void traverse(Node* a){
+            if(a==NULL) return;
+            traverse(a->lchild);
+            traverse(a->rchild);
+            cout << a->data;
         }
     public:
         Binaty_Tree(string str):root(NULL){
             int index = 0;
             create(root, str, index);
         }
+
         void traverse_back(){
             traverse(root);
         }
@@ -52,6 +55,7 @@ class Binaty_Tree{
 int main(){
     string str;
     cin>>str;
+
     Binaty_Tree a(str);
     a.traverse_back();
     return 0;
