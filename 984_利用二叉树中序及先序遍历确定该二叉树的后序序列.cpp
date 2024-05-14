@@ -14,12 +14,7 @@ void Last_Sequence(string pre, string mid, string& last){
     }
     i++;
     for(;i != mid.end(); i++) R_tree += *i;
-    // if(L_tree.length() == 1 || R_tree.length() == 1)
-    // {
-    //     last += L_tree;
-    //     last += R_tree;
-    //     return;
-    // }
+
     if(!L_tree.empty())
     {
         string l = pre.substr(1, L_tree.length());
