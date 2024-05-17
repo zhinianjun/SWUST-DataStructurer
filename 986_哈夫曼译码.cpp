@@ -1,99 +1,58 @@
-const int maxvalue=100;
-
-const int maxbit=100;
-
-const int maxn=100;
-
 #include "iostream"
-
 #include "stdio.h"
-
 #include "stdlib.h"
+#include <string>
+
+const int maxvalue=100;
+const int maxbit=100;
+const int maxn=100;
 
 using namespace std;
 
 struct haffnode
-
 {
-
 char ch;
-
 int weight;
-
 int flag;
-
 int parent;
-
 int leftchild;
-
 int rightchild;
-
 };
 
 struct code
-
 {
-
 int bit[maxn];
-
 int start;
-
 int weight;
-
 char ch;
-
 };
 
 void haffman(int weight[],char text[],int n,haffnode hafftree[])
-
 {
-
 int j,m1,m2,x1,x2,i;
-
 for(i=0;i< 2*n-1;i++)
-
 {
-
 if(i < n)
-
 {
-
 hafftree[i].weight=weight[i];
-
-hafftree[i].
-
-ch=text[i];
-
+hafftree[i].ch=text[i];
 }
-
 else
-
 {
-
 hafftree[i].weight=0;
-
 hafftree[i].ch='#';
-
 }
 
 hafftree[i].parent=0;
-
 hafftree[i].flag=0;
-
 hafftree[i].leftchild=-1;
-
 hafftree[i].rightchild=-1;
-
 }
-
 for(i=0;i< n-1;i++)
-
 {
 
 m1=m2=maxvalue;
-
 x1=x2=0;
-
 for(j=0;j< n+i;j++)
 
 {
@@ -177,15 +136,10 @@ parent=hafftree[child].parent;
 }
 
 for(j=cd.start+1;j< n;j++)
-
 haffcode[i].bit[j]=cd.bit[j];
-
 haffcode[i].start=cd.start;
-
 haffcode[i].weight=cd.weight;
-
 haffcode[i].ch=cd.ch;
-
 }
 
 }
@@ -197,17 +151,11 @@ void ccode(haffnode hafftree[],int n)
  }
 
 int main( )
-
 {
-
 int n=8;
-
 int weight[]={5,29,7,8,14,23,3,11};
-
 char text[]={'a','b','c','d','e','f','g','h'};
-
 haffnode myhafftree[maxvalue];
-
 code myhaffcode[maxvalue];
 
 haffman(weight,text,n,myhafftree);
