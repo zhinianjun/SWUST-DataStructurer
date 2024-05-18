@@ -144,10 +144,19 @@ haffcode[i].ch=cd.ch;
 
 }
 
-void ccode(haffnode hafftree[],int n)
+void ccode(haffnode haffnode[],int n)
 {
+    string str;
+    cin >> str;
+    string::const_iterator a = str.begin();
 
-
+    struct haffnode temp = haffnode[2*n-1];
+    for(;a!= str.end(); a++){
+        while(temp.leftchild != NULL && temp.rightchild != NULL){
+            if(*a == '0') temp = ;
+            
+        }
+    }
  }
 
 int main( )
