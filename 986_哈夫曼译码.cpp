@@ -150,12 +150,15 @@ void ccode(haffnode haffnode[],int n)
     cin >> str;
     string::const_iterator a = str.begin();
 
-    struct haffnode temp = haffnode[2*n-1];
-    for(;a!= str.end(); a++){
-        while(temp.leftchild != NULL && temp.rightchild != NULL){
-            if(*a == '0') temp = ;
-            
+    int temp = 2 * n - 2;
+    while(a != str.end()){
+        while(haffnode[temp].leftchild != -1 && haffnode[temp].rightchild != -1){
+            if(*a == '0') temp = haffnode[temp].leftchild;
+            if(*a == '1') temp = haffnode[temp].rightchild;
+            a++;
         }
+        cout << haffnode[temp].ch;
+        temp = 2 * n - 2;
     }
  }
 
@@ -172,6 +175,7 @@ haffman(weight,text,n,myhafftree);
 haffmancode(myhafftree,n,myhaffcode);
 
 ccode(myhafftree,n);
+// cout << myhafftree[myhafftree[n*2-2].rightchild].weight <<endl;
 
 return 0;
 
