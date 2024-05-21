@@ -21,13 +21,13 @@ class Binary_Tree{
     }
   public:
     Binary_Tree(int a[], int n) : root(NULL){
-      if(n>0)
+      if(n>1)
         root = new Node(a[0]);
       
       for(int i = 1; i < n; i++){
         Node* temp = root;
       
-        while(temp->lchild != NULL && temp->rchild != NULL){
+        while((a[i] > temp->data && temp->rchild != NULL) || (a[i] < temp->data && temp->lchild != NULL)){
           if(a[i] > temp->data) temp = temp->rchild;
           else if(a[i] < temp->data) temp = temp->lchild;
         }
@@ -35,19 +35,22 @@ class Binary_Tree{
           if(a[i] > temp->data) temp->rchild = t;
           else if(a[i] < temp->data) temp->lchild = t;
       }
-
+      
     }
     int find(int val){
       int times = 0;
       Node* temp = root;
-      if(root->data == val) return 1;
-      while(temp->data != val){
+      while(temp!=NULL){
         times++;
-        if(temp->lchild == NULL && temp->rchild == NULL && temp->data != val)
-          return -1;
-        if(val > temp->data) temp = temp->rchild;
-        else if(val < temp->data) temp = temp->lchild;
+        //cout << temp->data << endl;
+        if(temp->data == val)
+          return times;
+        else if(val > temp->data)
+          temp = temp->rchild;
+        else
+          temp = temp->lchild;
       }
+      return -1;
     }
     ~Binary_Tree(){
       Destroy(root);
@@ -59,6 +62,11 @@ int main(){
   int* a = new int[n];
   for(int i = 0; i < n; i++) cin >> a[i];
   Binary_Tree find_tree(a, n);
+  
+  int num;
+  cin >> num;
+  cout << find_tree.find(num);
+  
   delete[] a;
   return 0;
 }
